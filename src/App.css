@@ -1,38 +1,180 @@
-.App {
+.body {
+  background-image: url("https://www.pharmaceutical-technology.com/wp-content/uploads/sites/10/2020/03/Covid-19-Vaccine-development-e1599531596297.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  color: whitesmoke;
+  display: flex;
+}
+
+.pic {
+  object-fit: contain;
+  width: 350px;
+}
+
+.body-left {
+  text-align: center;
+  margin: 130px 0;
+  flex: 0.5;
+}
+
+.body-right {
+  background-color: rgba(0, 0, 0, 0.712);
+  flex: 0.5;
+  padding: 130px 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.register {
+  outline: none;
+  background-color: #23689b;
+  padding: 20px 40px;
+  color: whitesmoke;
+  font-weight: 800;
+  border: 1px solid white;
+  font-size: 1.05rem;
+  border-radius: 400px;
+  margin: 50px;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.register:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.topbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f4f9f9;
+  padding: 20px;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tabs > * {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.stats {
+  display: flex;
+  height: 350px;
+  width: 100vw;
+}
+
+.stats-left {
+  flex: 0.5;
+  width: 50vw;
+  background-color: #bbf1fa;
+}
+
+.stats-heading {
+  text-align: center;
+  color: rgb(82, 82, 82);
+  padding: 25px 0;
+}
+
+.stats-right {
+  width: 50vw;
+  flex: 0.5;
+  text-align: center;
+  background-color: #e8ffff;
+}
+
+.stats-1,
+.stats-2 {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.vacbars {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.odometerstats {
+  text-align: center;
+  color: black;
+  background-color: #e4fbff;
+  margin: 10px;
+  padding: 30px 20px 0px;
+  height: 100px;
+  width: 180px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px #a4ebf3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.odometerstats:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.news {
+  width: 100vw;
+  height: 540px;
+  display: flex;
+  overflow-x: scroll;
+}
+.news-clm {
+  background-color: #ccf2f4;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.news-articles {
+  background-color: honeydew;
+  margin: 20px;
+  padding: 40px;
+  text-align: center;
+  width: 350px;
+  height: 490px;
+  border-radius: 45px;
+  border: 2px solid grey;
+  box-shadow: 0 0 12px grey;
+}
+
+.news-articles:hover {
+  transform: scale(1.06);
+  transition: 0.3s;
+  display: block;
+}
+
+.news-img {
+  object-fit: contain;
+  height: 80px;
+  margin-top: 20px;
+}
+
+.hide {
+  color: indigo;
+  font-weight: 700;
+  font-size: 0rem;
+}
+
+.news-articles:hover .hide {
+    font-size: 1rem;
+    transition: 0.3s;    
+}
+
+.footer {
+    text-align: center;
+    height: 50px;
+    
+}
+
+.footer-txt {
+    padding: 20px;
+    background-color: #d0e8f2;
+    font-weight: 700;
 }
