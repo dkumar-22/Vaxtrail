@@ -13,6 +13,11 @@
   scrollbar-width: none; /* Firefox */
 }
 
+@font-face {
+  font-family: "nevis";
+  src: url(assets/NevisBold-KGwl.ttf);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

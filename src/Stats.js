@@ -47,7 +47,7 @@ function Stats() {
         </div>
       </div>
       <div className="stats-right">
-        <h2 className="stats-heading">VACCINE STATS</h2>
+        <h2 className="stats-heading">SOME TOP VACCINES</h2>
         <div className="vacbars">
           <Vaccines value={81} name="Covaxin" />
           <Vaccines value={62} name="Covishield"/>

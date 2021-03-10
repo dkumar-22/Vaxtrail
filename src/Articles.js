@@ -8,7 +8,7 @@ function Articles({ img, url, title, description }) {
         <h4 className="title">{title}</h4>
         <p className="desc">{description}</p>
         <br/>
-        <p className="hide"> Click To Read More</p>
+        <p className="hide">...Click To Read More</p>
       </div>
     </a>
   );

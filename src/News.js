@@ -8,7 +8,7 @@ function News() {
     async function getNews() {
       await axios
         .get(
-          "https://newsapi.org/v2/everything?apiKey=f6f396807a8248ed98cec28d06fe6bd7&q=vaccination&pageSize=30"
+          "https://newsapi.org/v2/everything?apiKey=f6f396807a8248ed98cec28d06fe6bd7&q=vaccination corona virus india&language=en&pageSize=20"
         )
         .then(function (response) {
           // handle success
@@ -21,10 +21,10 @@ function News() {
     }
     getNews();
   }, []);
-  console.log(news);
+  // console.log(news);
   return (
     <div className="news-clm">
-      <h1 className="stats-heading">VACCINATION RELATED NEWS</h1>
+      <h1 className="stats-heading covid-news">LATEST COVID-19 NEWS</h1>
       <div className="news">
         {news.map((x) => {
           return (

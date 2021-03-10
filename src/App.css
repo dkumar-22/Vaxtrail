@@ -1,5 +1,6 @@
 .body {
-  background-image: url("https://www.pharmaceutical-technology.com/wp-content/uploads/sites/10/2020/03/Covid-19-Vaccine-development-e1599531596297.jpg");
+  font-family: "nevis";
+  background-image: url("https://qtxasset.com/fiercepharma/1613598427/Coronavirus%20vaccine.jpg?NpvxFyj0ZwJBsp3Um5VkJrL9sGTMtSON");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -10,7 +11,9 @@
 
 .pic {
   object-fit: contain;
-  width: 350px;
+  width: 250px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .body-left {
@@ -27,16 +30,17 @@
 }
 
 .register {
+  font-family: "nevis";
   outline: none;
   background-color: #23689b;
   padding: 20px 40px;
   color: whitesmoke;
   font-weight: 800;
-  border: 1px solid white;
+  border: 2px solid #23689b;
   font-size: 1.05rem;
   border-radius: 400px;
+  box-shadow: 3px 0 5px rgba(0, 0, 0, 0.452);
   margin: 50px;
-  box-shadow: 2px 2px 5px black;
   cursor: pointer;
 }
 
@@ -46,14 +50,28 @@
 }
 
 .topbar {
+  font-family: "nevis";
   display: flex;
   justify-content: space-between;
-  background-color: #f4f9f9;
+  background-color: whitesmoke;
   padding: 20px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.app-logo {
+  object-fit: contain;
+  height: 38px;
+  margin-right: 10px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.16);
+  border-radius: 65%;
 }
 
 .tabs {
   display: flex;
+  align-items: center;
 }
 
 .tabs > * {
@@ -61,7 +79,12 @@
   cursor: pointer;
 }
 
+.tabs > *:hover {
+  color: #6E7F94;
+}
+
 .stats {
+  font-family: "nevis";
   display: flex;
   height: 350px;
   width: 100vw;
@@ -70,10 +93,11 @@
 .stats-left {
   flex: 0.5;
   width: 50vw;
-  background-color: #bbf1fa;
+  background-color: #fff;
 }
 
 .stats-heading {
+  font-family: "nevis";
   text-align: center;
   color: rgb(82, 82, 82);
   padding: 25px 0;
@@ -83,7 +107,7 @@
   width: 50vw;
   flex: 0.5;
   text-align: center;
-  background-color: #e8ffff;
+  background-color: #eefdfe;
 }
 
 .stats-1,
@@ -94,6 +118,7 @@
 }
 
 .vacbars {
+  font-family: "nevis";
   margin-top: 30px;
   display: flex;
   justify-content: space-around;
@@ -101,20 +126,21 @@
 }
 
 .odometerstats {
+  font-family: "nevis";
   text-align: center;
   color: black;
-  background-color: #e4fbff;
+  background-color: #eefdfe;
   margin: 10px;
   padding: 30px 20px 0px;
   height: 100px;
   width: 180px;
-  border-radius: 25px;
-  box-shadow: 0 0 10px #a4ebf3;
+  border-radius: 15px;
+  box-shadow: -1px 10px 6px rgba(0, 0, 0, 0.16);
 }
 
 .odometerstats:hover {
-    transform: scale(1.05);
-    transition: 0.3s;
+  transform: scale(1.05);
+  transition: 0.3s;
 }
 
 .news {
@@ -124,7 +150,7 @@
   overflow-x: scroll;
 }
 .news-clm {
-  background-color: #ccf2f4;
+  background: linear-gradient(to top right, #5bdada -45%, #ffffff 79%);
 }
 
 a {
@@ -133,15 +159,14 @@ a {
 }
 
 .news-articles {
-  background-color: honeydew;
+  background-color: #eefdfe;
   margin: 20px;
   padding: 40px;
   text-align: center;
-  width: 350px;
+  width: 370px;
   height: 490px;
-  border-radius: 45px;
-  border: 2px solid grey;
-  box-shadow: 0 0 12px grey;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .news-articles:hover {
@@ -151,9 +176,10 @@ a {
 }
 
 .news-img {
-  object-fit: contain;
   height: 80px;
+  width: 200px;
   margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 .hide {
@@ -163,18 +189,23 @@ a {
 }
 
 .news-articles:hover .hide {
-    font-size: 1rem;
-    transition: 0.3s;    
+  font-size: 1rem;
+  transition: 0.3s;
 }
 
 .footer {
-    text-align: center;
-    height: 50px;
-    
+  font-family: "nevis";
+  text-align: center;
+  height: 50px;
 }
 
 .footer-txt {
-    padding: 20px;
-    background-color: #d0e8f2;
-    font-weight: 700;
+  color: #fff;
+  padding: 20px;
+  background-color: #15324e;
+  font-weight: 700;
+}
+
+.covid-news{
+  letter-spacing: 5px;
 }
