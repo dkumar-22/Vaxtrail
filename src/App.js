@@ -47,6 +47,33 @@ function App() {
         });
       })
       .catch((err) => console.log(err));
+    axios
+      .get("http://localhost:5000/hospitals/pvt")
+      .then((res) => {
+        dispatch({
+          type: "SET_PVTHOSPITALS",
+          pvtHospitals: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get("http://localhost:5000/hospitals/nearby/pvt")
+      .then((res) => {
+        dispatch({
+          type: "SET_PVTNEARBY",
+          pvtnearby: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get("http://localhost:5000/hospitals/nearby/govt")
+      .then((res) => {
+        dispatch({
+          type: "SET_GOVTNEARBY",
+          govtnearby: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
     if (latitude > 0 && longitude > 0) {
       axios
         .post("http://localhost:5000/hospitals/nearby", {
