@@ -1,4 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+const linkstyle = {
+  textDecoration: "none",
+};
 
 function Topbar() {
   return (
@@ -9,13 +14,19 @@ function Topbar() {
           alt="vacctrack logo"
           className="app-logo"
         />
-        <h3 className="brand">VaccTrack</h3>
+        <Link to="/" style={linkstyle}>
+          <h3 className="brand">VaccTrack</h3>
+        </Link>
       </div>
       <div className="tabs">
         <p>Status</p>
-        <p>Hospitals</p>
+        <Link to="/hospitals" style={linkstyle}>
+          <p>Hospitals</p>
+        </Link>
         <p>Vaccines</p>
-        <p>Login</p>
+        <Link to="/login" style={linkstyle}>
+          <p>Login</p>
+        </Link>
       </div>
     </div>
   );

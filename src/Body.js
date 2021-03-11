@@ -1,7 +1,9 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+const linkstyle = {
+  textDecoration: "none",
+};
 function Body() {
-
   return (
     <div className="body">
       <div className="body-left">
@@ -15,7 +17,9 @@ function Body() {
         <h1 className="head">
           COVID-19 <br /> VACCINE BOOKING PLATFORM
         </h1>
-        <button className="register">REGISTER YOURS</button>
+        <Link to="/register" style={linkstyle}>
+          <button className="register">REGISTER YOURS</button>
+        </Link>
       </div>
     </div>
   );

@@ -80,7 +80,7 @@
 }
 
 .tabs > *:hover {
-  color: #6E7F94;
+  color: #6e7f94;
 }
 
 .stats {
@@ -206,6 +206,54 @@ a {
   font-weight: 700;
 }
 
-.covid-news{
+.covid-news {
   letter-spacing: 5px;
+}
+
+.shownearbybtn {
+  padding: 15px;
+  margin-right: 20px;
+  outline: none;
+  background-color: black;
+  color: white;
+  border-radius: 25px;
+  border: none;
+  font-weight: 700;
+  width: 200px;
+  text-align: center;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.418);
+  cursor: pointer;
+}
+
+.shownearbybtn:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.418);
+}
+
+.hospitals-list {
+  margin: 20px;
+}
+
+.hospital-card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  background-color: #e8e8e8;
+  margin: 40px 0 30px;
+  width: 96.5vw;
+  height: 280px;
+  padding: 50px 25px;
+  border-radius: 20px;
+}
+
+.card-links {
+  padding-right: 20px;
+  color: rgb(119, 49, 184);
+}
+
+.card-links:hover {
+  color: rgb(85, 12, 85);
+}
+
+.forbtn {
+  text-align: right;
 }
