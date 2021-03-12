@@ -277,7 +277,8 @@ a {
   margin-left: 25px;
 }
 
-.del-btn:hover , .edit-btn:hover {
+.del-btn:hover,
+.edit-btn:hover {
   transform: scale(1.05);
   box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.226);
   transition: 0.3s;
@@ -288,7 +289,7 @@ a {
   outline: none;
   border: none;
   color: white;
-  background-color: rgb(156, 68, 68);
+  background-color: #440a67;
   font-size: 2.3rem;
   padding: 0 10.5px;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.226);
