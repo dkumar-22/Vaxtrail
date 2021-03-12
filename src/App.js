@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import "./App.css";
-// import Topbar from "./Topbar";
 import Body from "./Body";
 import Stats from "./Stats";
 import News from "./News";
 import Footer from "./Footer";
 import axios from "axios";
 import { useDataLayerValue } from "./DataLayer";
+
 function App() {
   const [{ latitude, longitude }, dispatch] = useDataLayerValue();
   useEffect(() => {
@@ -29,33 +29,20 @@ function App() {
       }
     }
     getLocation();
-    axios
-      .get("http://localhost:5000/hospitals/all")
-      .then((res) => {
-        dispatch({
-          type: "SET_ALLHOSPITALS",
-          allHospitals: res.data,
-        });
-      })
-      .catch((err) => console.log(err));
-    axios
-      .get("http://localhost:5000/hospitals/govt")
-      .then((res) => {
-        dispatch({
-          type: "SET_GOVTHOSPITALS",
-          govtHospitals: res.data,
-        });
-      })
-      .catch((err) => console.log(err));
-    axios
-      .get("http://localhost:5000/hospitals/pvt")
-      .then((res) => {
-        dispatch({
-          type: "SET_PVTHOSPITALS",
-          pvtHospitals: res.data,
-        });
-      })
-      .catch((err) => console.log(err));
+    if (latitude > 0 && longitude > 0) {
+      axios
+        .post("http://localhost:5000/hospitals/nearby", {
+          longitude: longitude,
+          latitude: latitude,
+        })
+        .then((res) => {
+          dispatch({
+            type: "SET_NEARBYHOSPITALS",
+            nearbyHospitals: res.data,
+          });
+        })
+        .catch((err) => console.log(err));
+    }
     axios
       .get("http://localhost:5000/hospitals/nearby/pvt")
       .then((res) => {
@@ -74,24 +61,18 @@ function App() {
         });
       })
       .catch((err) => console.log(err));
-    if (latitude > 0 && longitude > 0) {
-      axios
-        .post("http://localhost:5000/hospitals/nearby", {
-          lat: latitude,
-          long: longitude,
-        })
-        .then((res) => {
-          dispatch({
-            type: "SET_NEARBYHOSPITALS",
-            nearbyHospitals: res.data,
-          });
-        })
-        .catch((err) => console.log(err));
-    }
+    axios
+      .get("http://localhost:5000/hospitals/all")
+      .then((res) => {
+        dispatch({
+          type: "SET_ALLHOSPITALS",
+          allHospitals: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
   }, [dispatch, latitude, longitude]);
   return (
     <div className="App">
-      {/* <Topbar /> */}
       <Body />
       <Stats />
       <News />

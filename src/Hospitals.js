@@ -1,12 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Hospital from "./Hospital";
 import { useDataLayerValue } from "./DataLayer";
+import axios from "axios";
 let i = 0,
   j = 0;
 function Hospitals() {
   const [nearby, showNearby] = useState(false);
-  const [{ nearbyHospitals, allHospitals }] = useDataLayerValue();
-  console.log(nearbyHospitals, allHospitals);
+  const [{ nearbyHospitals, allHospitals }, dispatch] = useDataLayerValue();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/hospitals/all")
+      .then((res) => {
+        dispatch({
+          type: "SET_ALLHOSPITALS",
+          allHospitals: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get("http://localhost:5000/hospitals/govt")
+      .then((res) => {
+        dispatch({
+          type: "SET_GOVTHOSPITALS",
+          govtHospitals: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+
+    axios
+      .get("http://localhost:5000/hospitals/pvt")
+      .then((res) => {
+        dispatch({
+          type: "SET_PVTHOSPITALS",
+          pvtHospitals: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  }, [dispatch]);
   function handleClick() {
     showNearby((prev) => !prev);
   }

@@ -15,11 +15,16 @@ export const initialState = {
   latitude: 0,
 };
 
-console.log(initialState);
+// console.log(initialState);
 
 function reducer(state, action) {
   console.log("🕺", action);
   switch (action.type) {
+    case "SET_LOGGED":
+      return {
+        ...state,
+        logged: action.logged,
+      };
     case "SET_LONGITUDE":
       return {
         ...state,
@@ -45,12 +50,12 @@ function reducer(state, action) {
         ...state,
         pvtHospitals: action.pvtHospitals,
       };
-      case "SET_PVTNEARBY":
+    case "SET_PVTNEARBY":
       return {
         ...state,
         pvtnearby: action.pvtnearby,
       };
-      case "SET_GOVTNEARBY":
+    case "SET_GOVTNEARBY":
       return {
         ...state,
         govtnearby: action.govtnearby,
