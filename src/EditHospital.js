@@ -118,7 +118,7 @@ export default function SignIn() {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Add a Hospital
+          Edit Hospital Details
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <TextField

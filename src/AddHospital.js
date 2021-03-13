@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-
+import { Redirect } from "react-router";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
-
   const [details, setDetails] = useState({
     type: "",
     name: "",
@@ -53,7 +52,7 @@ export default function SignIn() {
     longitude: "",
     latitude: "",
   });
-  
+  const [updated, setUpdated] = useState(false);
   function handleChange(e) {
     const { name, value } = e.target;
     setDetails((prev) => {
@@ -75,10 +74,16 @@ export default function SignIn() {
     console.log(typeof obj.longitude);
     axios
       .post("http://localhost:5000/hospitals/add", obj)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+        setUpdated(true);
+      })
       .catch((err) => console.log(err));
   }
   const classes = useStyles();
+  if (updated) {
+    return <Redirect to="/success" />;
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

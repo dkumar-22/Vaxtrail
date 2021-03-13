@@ -2,13 +2,13 @@ import React from "react";
 import AdminHospital from "./AdminHospital";
 import { useDataLayerValue } from "./DataLayer";
 import { Link } from "react-router-dom";
+
 const linkstyle = {
   textDecoration: "none",
 };
 let i = 0;
 function AdminHospitals() {
   const [{ allHospitals }] = useDataLayerValue();
-  const [hospis, setHospis] = React.useState(allHospitals);
   return (
     <div className="hospitals-list">
       <div className="forbtn">
@@ -26,8 +26,6 @@ function AdminHospitals() {
             contact={x.contact}
             website={x.website}
             directions={x.directions}
-            hospis={hospis}
-            setHospis={setHospis}
           />
         );
       })}
