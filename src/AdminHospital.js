@@ -19,6 +19,13 @@ function AdminHospital({ id, type, name, contact, website, directions }) {
       allHospitals: allHospitals.filter((el) => el._id !== id),
     });
   }
+
+  function remove(id) {
+    var r = window.confirm("Are You Sure?");
+    if (r === true) Del(id);
+    else console.log("Can't Delete");
+  }
+
   return (
     <div className="hospital-card">
       <div className="admin-hospi">
@@ -30,7 +37,7 @@ function AdminHospital({ id, type, name, contact, website, directions }) {
           <button
             className="del-btn"
             onClick={() => {
-              Del(id);
+              remove(id);
             }}
           >
             Delete

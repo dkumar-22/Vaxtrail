@@ -7,6 +7,15 @@ const linkstyle = {
 
 function Topbar() {
   const [{ logged }, dispatch] = useDataLayerValue();
+  function handleLogout() {
+    var r = window.confirm("Are You Sure?");
+    if (r === true) {
+      dispatch({
+        type: "SET_LOGGED",
+        logged: false,
+      });
+    } else console.log("Can't Logout");
+  }
   return (
     <div className="topbar">
       <div className="logo">
@@ -31,16 +40,7 @@ function Topbar() {
         </Link>
         <p>Vaccines</p>
         {logged ? (
-          <Link
-            to="/"
-            style={linkstyle}
-            onClick={() => {
-              dispatch({
-                type: "SET_LOGGED",
-                logged: false,
-              });
-            }}
-          >
+          <Link to="/" style={linkstyle} onClick={handleLogout}>
             <p>Logout</p>
           </Link>
         ) : (
