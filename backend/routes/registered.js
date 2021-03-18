@@ -3,6 +3,9 @@ const router = require("express").Router();
 let Registered = require("../models/registered.model");
 const nodemailer = require("nodemailer");
 var credentials = require("./credentials.js");
+
+let appointmentDetails;
+
 const transporter = nodemailer.createTransport({
   port: 465,
   host: "smtp.gmail.com",
@@ -10,12 +13,26 @@ const transporter = nodemailer.createTransport({
     user: credentials.email,
     pass: credentials.password,
   },
-  secure: true, // upgrades later with STARTTLS -- change this based on the PORT
+  secure: true,
 });
 
 router.route("/add").post((req, res) => {
-  // console.log(req.body);
   let datetoday = new Date();
+  if (req.body.age > 59) {
+    appointmentDetails =
+      "Date and Time: " +
+      req.body.appointmentDateandTime.replace("T", " ") +
+      "<br/><p>*Timings in 24H format</p>";
+  } else {
+    appointmentDetails =
+      "<b>Date: </b>" +
+      req.body.appointmentDate +
+      "<br/><b>Slot: </b>" +
+      req.body.slot.start +
+      "-" +
+      req.body.slot.end +
+      "<br/><p>*Timings in 24H format</p>";
+  }
   const registered = new Registered({
     fname: req.body.fname,
     lname: req.body.lname,
@@ -42,11 +59,12 @@ router.route("/add").post((req, res) => {
         subject: "Vaccine Confimation",
         text: "text",
         html:
-          "<b>Vaccine Booked! </b><br>Thank You for registering for the Vaccination Program.<br>Your Booking ID: " +
+          "<br>Vaccine Booked! </br><br>Thank You for registering for the Vaccination Program.<br>Your Booking ID: " +
           "<b>" +
           rec._id +
           "</b>" +
-          "<br/>Keep this mail for future reference.<br><br>Stay safe and healthy",
+          "<br/>Keep this mail for future reference.<br><br>Stay safe and healthy!<br/><br/><b>Booking Details:</b><br/>" +
+          appointmentDetails,
       };
 
       transporter.sendMail(mailData, (error, info) => {
