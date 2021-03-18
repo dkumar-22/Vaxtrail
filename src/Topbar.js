@@ -31,21 +31,21 @@ function Topbar() {
       <div className="tabs">
         {logged && (
           <Link to="/admin" style={linkstyle}>
-            <p>Admin</p>
+            <p className="tab-options" >ADMIN</p>
           </Link>
         )}
-        <p>Status</p>
+        <p className="tab-options" >STATUS</p>
         <Link to="/hospitals" style={linkstyle}>
-          <p>Hospitals</p>
+          <p className="tab-options" >HOSPITALS</p>
         </Link>
-        <p>Vaccines</p>
+        <p className="tab-options" >VACCINES</p>
         {logged ? (
           <Link to="/" style={linkstyle} onClick={handleLogout}>
-            <p>Logout</p>
+            <p className="tab-options" >LOGOUT</p>
           </Link>
         ) : (
           <Link to="/login" style={linkstyle}>
-            <p>Login</p>
+            <p className="tab-options" >LOGIN</p>
           </Link>
         )}
       </div>

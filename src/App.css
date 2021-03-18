@@ -75,7 +75,8 @@
 }
 
 .tabs > * {
-  margin: 0 10px;
+  margin: 0 11px;
+  font-size: 0.85rem;
   cursor: pointer;
 }
 
@@ -322,4 +323,9 @@ a {
 
 .succ {
   margin-top: 30px;
+}
+
+.tabs-options {
+  font-size: 0.9rem;
+  font-weight: bold;
 }

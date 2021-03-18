@@ -5,7 +5,9 @@ export const initialState = {
   admin: email,
   password: pass,
   user: null,
+  id: "",
   allHospitals: [],
+  details: {},
   nearbyHospitals: [],
   govtHospitals: [],
   pvtHospitals: [],
@@ -30,6 +32,11 @@ function reducer(state, action) {
         ...state,
         longitude: action.longitude,
       };
+    case "SET_ID":
+      return {
+        ...state,
+        id: action.id,
+      };
     case "SET_LATITUDE":
       return {
         ...state,
@@ -39,6 +46,11 @@ function reducer(state, action) {
       return {
         ...state,
         nearbyHospitals: action.nearbyHospitals,
+      };
+    case "SET_DETAILS":
+      return {
+        ...state,
+        details: action.details,
       };
     case "SET_GOVTHOSPITALS":
       return {
