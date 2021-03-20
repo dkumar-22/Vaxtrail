@@ -210,7 +210,7 @@ export default function SignIn() {
             type="submit"
             fullWidth
             variant="contained"
-            color="secondary"
+            color="primary"
             className={classes.submit}
           >
             Update Hospital Details

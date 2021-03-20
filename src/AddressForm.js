@@ -157,7 +157,7 @@ export default function AddressForm({ details, handleDetails }) {
             onChange={handleDetails}
           />
         </Grid>
-        <Grid >
+        <Grid xs={12}>
           <FormControl className={classes.formControl}>
             <InputLabel id="demo-simple-select-label">Hospitals</InputLabel>
             <Select
@@ -200,7 +200,7 @@ export default function AddressForm({ details, handleDetails }) {
             />
           </Grid>
         ) : (
-          <Grid item xs={12}>
+          <>
             <Grid item xs={6}>
               <TextField
                 id="date"
@@ -212,6 +212,7 @@ export default function AddressForm({ details, handleDetails }) {
                 }}
                 onChange={handleDetails}
               />
+              <FormHelperText>Select a suitable date</FormHelperText>
             </Grid>
             <Grid>
               <FormControl className={classes.formControl}>
@@ -232,7 +233,7 @@ export default function AddressForm({ details, handleDetails }) {
                 <FormHelperText>Select A Time Slot</FormHelperText>
               </FormControl>
             </Grid>
-          </Grid>
+          </>
         )}
       </Grid>
     </React.Fragment>

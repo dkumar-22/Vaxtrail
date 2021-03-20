@@ -6,8 +6,14 @@ function Vaccines({ value, name }) {
       <ProgressBar
         delay="1000"
         width="230"
-        trackWidth="13"
+        trackWidth="20"
         percentage={value}
+        defColor={{
+            fair: 'orangered',
+            good: 'coral',
+            excellent: 'teal',
+            poor: 'red',
+          }}
       />
       <p className="vaccine-name">{name}</p>
     </div>

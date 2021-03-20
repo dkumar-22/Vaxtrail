@@ -1,6 +1,8 @@
 const router = require("express").Router();
 let Location = require("../models/hospital.model");
 
+Location = Location.Location;
+
 let flag = 0;
 var long = 0,
   lat = 0;

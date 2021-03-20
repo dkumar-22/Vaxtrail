@@ -38,7 +38,7 @@ router.route("/add").post((req, res) => {
     lname: req.body.lname,
     address: req.body.address,
     city: req.body.city,
-    state: req.body.zip,
+    state: req.body.state,
     zip: req.body.zip,
     phone: req.body.phone,
     email: req.body.email,
@@ -76,6 +76,14 @@ router.route("/add").post((req, res) => {
       res.send(rec._id);
     })
     .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/status/:id").all((req, res) => {
+  Registered.findById(req.params.id)
+    .then((rec) => {
+      res.send(rec);
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

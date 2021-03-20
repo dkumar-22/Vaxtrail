@@ -54,6 +54,7 @@ function Stats() {
           <Vaccines value={95} name="Pfizer"/>
           <Vaccines value={90} name="Astrazeneca"/>
         </div>
+        <p style={{marginTop:"53px"}}>*As per the reports of WHO</p>
       </div>
     </div>
   );

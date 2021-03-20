@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const location = require("./hospital.model")
 const registeredSchema = mongoose.Schema({
   fname: { type: String },
   lname: { type: String },
@@ -9,7 +9,7 @@ const registeredSchema = mongoose.Schema({
   zip: { type: String },
   phone: { type: String },
   email: { type: String },
-  shospital: { type: Object },
+  shospital: { type: location.locationSchema },
   dob: { type: String },
   slot: { type: Object },
   appointmentDateandTime: { type: String },
