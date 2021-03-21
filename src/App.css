@@ -417,20 +417,20 @@ a {
 .details > p {
   margin-bottom: 10px;
   font-size: 1.1rem;
-  color:rgb(216, 216, 216);
+  color: rgb(216, 216, 216);
 }
 
 .details {
   background-color: #343f56;
   width: 80vw;
-  margin: 35px 200px;
+  margin: 35px auto;
   padding: 33px 65px;
   border-radius: 35px;
   color: white;
   box-shadow: 4px 6px 18px rgba(0, 0, 0, 0.664);
 }
 
-p > b {
+.detailsp > b {
   font-size: 1.15rem;
   color: white;
   margin-right: 10px;
@@ -448,12 +448,12 @@ p > b {
   object-fit: contain;
   width: 210px;
   position: absolute;
-  right:1%;
+  right: 1%;
   top: 15%;
 }
 
 .banner {
-  position:absolute;
+  position: absolute;
   background-color: #e84545;
   padding: 20px 30px;
   top: 45%;
@@ -463,14 +463,14 @@ p > b {
 }
 
 .details-bg {
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   padding: 20px 0;
 }
 
 .cancel {
-  float:right;
-  border:none;
-  outline:none;
+  float: right;
+  border: none;
+  outline: none;
   color: white;
   font-size: 0.9rem;
   padding: 16px;
@@ -478,7 +478,7 @@ p > b {
   border-radius: 25px;
   font-weight: 500;
   box-shadow: 4px 6px 18px rgba(0, 0, 0, 0.144);
-  cursor:pointer;
+  cursor: pointer;
   margin-right: 10px;
   width: 165px;
   text-align: center;
@@ -486,5 +486,22 @@ p > b {
 
 .cancel:hover {
   transform: scale(1.03);
-  transition:0.3s;
+  transition: 0.3s;
+}
+
+.user-details {
+  background-color: #e8e8e8;
+  margin: 3.3%;
+  padding: 3% 4%;
+  border-radius: 25px;
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.144);
+}
+
+.adminheading{
+  margin-right: 5px;
+  font-size: 1.05rem;
+}
+
+.adminrow {
+  margin: 1% 0;
 }

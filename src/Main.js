@@ -13,8 +13,9 @@ import NotFound from "./NotFound";
 import AddHospital from "./AddHospital";
 import EditHospital from "./EditHospital";
 import Success from "./Success";
-import Status from "./Status"
-import Details from "./Details"
+import Status from "./Status";
+import Details from "./Details";
+import AdminDetails from "./AdminDetails";
 function Main() {
   const [{ logged }] = useDataLayerValue();
   return (
@@ -36,6 +37,13 @@ function Main() {
             exact
             component={() =>
               logged ? <AdminHospitals /> : <Redirect to="/" />
+            }
+          />
+          <Route
+            path="/details"
+            exact
+            component={() =>
+              logged ? <AdminDetails /> : <Redirect to="/login" />
             }
           />
           <Route component={() => <NotFound />} />

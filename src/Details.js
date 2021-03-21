@@ -1,52 +1,77 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import { Redirect } from "react-router";
 function Details() {
   const [det, sedet] = useState({});
   const [hospi, sethospi] = useState("");
   const [start, setstart] = useState("");
   const [end, setend] = useState("");
   const [website, setwebsite] = useState("");
+  const [can, setcan] = useState(false);
   const [dir, setdir] = useState("");
   let { id } = useParams();
+
+  function handleClick() {
+    let r = window.confirm("The Appointment will be Cancelled");
+    if (r === true) {
+      window.alert("Appointment Cancelled");
+      axios
+        .post("http://localhost:5000/registered/delete/" + id, {
+          email: det.email,
+        })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+      setcan(true);
+    }
+  }
   useEffect(() => {
     async function getDetails() {
       await axios
         .post("http://localhost:5000/registered/status/" + id)
         .then((res) => {
-          sedet(res.data);
-          sethospi(res.data.shospital.name);
-          setstart(res.data.slot.start);
-          setend(res.data.slot.end);
-          setdir(res.data.shospital.directions);
-          setwebsite(res.data.shospital.website);
+          console.log(res.data);
+          if (res.data === "Not Found" || res.data === "") {
+            window.alert("Record Not Found!");
+            setcan(true);
+          } else {
+            sedet(res.data);
+            sethospi(res.data.shospital.name);
+            setstart(res.data.slot.start);
+            setend(res.data.slot.end);
+            setdir(res.data.shospital.directions);
+            setwebsite(res.data.shospital.website);
+          }
         })
         .catch((err) => console.log(err));
     }
     getDetails();
   }, [id]);
+
+  if (can) {
+    return <Redirect to="/" />;
+  }
   // console.log(det);
   // console.log(hospi);
   return (
     <div className="details-bg">
       <div className="details">
-        <div className="banner">
+        {/* <div className="banner">
           <h2>USER DETAILS: </h2>
-        </div>
-        <p>
+        </div> */}
+        <p className="detailsp">
           <b>Name: </b>
           {det.fname + " " + det.lname}
         </p>
-        <p>
+        <p className="detailsp">
           <b>Registered on: </b>
           {det.date}
         </p>
-        <p>
+        <p className="detailsp">
           <b>Date of birth: </b>
           {det.dob}
         </p>
-        <p>
+        <p className="detailsp">
           <b>Address: </b>
           <a
             className="cancel"
@@ -58,11 +83,11 @@ function Details() {
           </a>
           {det.address + ", " + det.city + ", " + det.state + ", " + det.zip}
         </p>
-        <p>
+        <p className="detailsp">
           <b>Phone: </b>
           {det.phone}
         </p>
-        <p>
+        <p className="detailsp">
           <b>Email: </b>
           <a
             className="cancel"
@@ -74,24 +99,28 @@ function Details() {
           </a>
           {det.email}
         </p>
-        <p>
+        <p className="detailsp">
           <b>Name of the hospital: </b>
           {hospi}
         </p>
-        <button className="cancel" style={{ backgroundColor: " #387c6d" }}>
+        <button
+          onClick={handleClick}
+          className="cancel"
+          style={{ backgroundColor: " #387c6d" }}
+        >
           Cancel Appointment
         </button>
         {det.age > 59 ? (
-          <p>
+          <p className="detailsp">
             <b>Appointment Date and Time: </b>
             {det.appointmentDateandTime}
           </p>
         ) : (
-          <p>
+          <p className="detailsp">
             <b>Appointment Date: </b>
             {det.appointmentDate}
             <br />
-            <p className="start">
+            <p className="detailsp start">
               <b>Chosen Slot: </b>
               {start + "-" + end}
             </p>

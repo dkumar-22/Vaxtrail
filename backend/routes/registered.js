@@ -16,6 +16,12 @@ const transporter = nodemailer.createTransport({
   secure: true,
 });
 
+router.route("/all").get((req, res) => {
+  Registered.find({}).then((data) => {
+    res.send(data);
+  });
+});
+
 router.route("/add").post((req, res) => {
   let datetoday = new Date();
   if (req.body.age > 59) {
@@ -81,9 +87,40 @@ router.route("/add").post((req, res) => {
 router.route("/status/:id").all((req, res) => {
   Registered.findById(req.params.id)
     .then((rec) => {
+      // console.log(rec);
+      // console.log(typeof rec);
       res.send(rec);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      // console.log(err);
+      res.send("Not Found");
+    });
 });
 
+router.route("/delete/:id").all((req, res) => {
+  Registered.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.json("Appointment Cancelled.");
+      const mailData = {
+        from: credentials.email,
+        to: req.body.email,
+        subject: "Appointment Cancellation",
+        text: "text",
+        html:
+          "<br>Vaccination Appointment Cancelled<br><br>Your appointment with Booking ID: " +
+          "<b>" +
+          req.params.id +
+          "</b>" +
+          " has been cancelled. You can register your appointment again anytime.<br><br>Stay safe and healthy!<br/><br/>Thank You!",
+      };
+
+      transporter.sendMail(mailData, (error, info) => {
+        if (error) {
+          return console.log(error);
+        }
+        console.log("Mail Sent");
+      });
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 module.exports = router;

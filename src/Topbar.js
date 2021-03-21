@@ -34,6 +34,11 @@ function Topbar() {
             <p className="tab-options">ADMIN</p>
           </Link>
         )}
+        {logged && (
+          <Link to="/details" style={linkstyle}>
+            <p className="tab-options">REGISTRATIONS</p>
+          </Link>
+        )}
         <Link to="/status" style={linkstyle}>
           <p className="tab-options">STATUS</p>
         </Link>
