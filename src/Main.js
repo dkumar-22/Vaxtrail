@@ -16,6 +16,9 @@ import Success from "./Success";
 import Status from "./Status";
 import Details from "./Details";
 import AdminDetails from "./AdminDetails";
+import VaccinePage from "./VaccinePage";
+import AddVaccine from "./AddVaccine";
+import EditVaccine from "./EditVaccine"
 function Main() {
   const [{ logged }] = useDataLayerValue();
   return (
@@ -31,6 +34,9 @@ function Main() {
           <Route path="/success" exact component={Success} />
           <Route path="/status" exact component={Status} />
           <Route path="/status/:id" exact component={Details} />
+          <Route path="/vaccines" exact component={VaccinePage} />
+          <Route path="/vaccines/add" exact component={AddVaccine} />
+          <Route path="/vaccines/edit/:id" exact component={EditVaccine} />
           <Route path="/edit/:id" children={<EditHospital />} />
           <Route
             path="/admin"

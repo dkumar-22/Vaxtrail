@@ -72,6 +72,7 @@ export default function Checkout() {
   const [details, setDetails] = useState({
     fname: "",
     lname: "",
+    gender:"",
     address: "",
     city: "",
     state: "",
@@ -80,7 +81,7 @@ export default function Checkout() {
     email: "",
     shospital: {},
     dob: "",
-    slot: {},
+    slot: { start: "nd", end: "nd" },
     appointmentDateandTime: "",
     appointmentDate: "",
     age: 0,

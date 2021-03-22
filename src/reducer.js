@@ -8,6 +8,7 @@ export const initialState = {
   id: "",
   allHospitals: [],
   details: {},
+  vaccines: [],
   nearbyHospitals: [],
   govtHospitals: [],
   pvtHospitals: [],
@@ -26,6 +27,11 @@ function reducer(state, action) {
       return {
         ...state,
         logged: action.logged,
+      };
+    case "SET_VACCINES":
+      return {
+        ...state,
+        vaccines: action.vaccines,
       };
     case "SET_LONGITUDE":
       return {

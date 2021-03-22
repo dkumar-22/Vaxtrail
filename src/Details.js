@@ -64,6 +64,10 @@ function Details() {
           {det.fname + " " + det.lname}
         </p>
         <p className="detailsp">
+          <b>Gender: </b>
+          {det.gender}
+        </p>
+        <p className="detailsp">
           <b>Registered on: </b>
           {det.date}
         </p>

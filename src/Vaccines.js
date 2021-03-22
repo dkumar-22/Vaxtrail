@@ -10,7 +10,7 @@ function Vaccines({ value, name }) {
         percentage={value}
         defColor={{
             fair: 'orangered',
-            good: 'coral',
+            good: '#FF0068',
             excellent: 'teal',
             poor: 'red',
           }}

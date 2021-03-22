@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
-const location = require("./hospital.model")
+const location = require("./hospital.model");
 const registeredSchema = mongoose.Schema({
   fname: { type: String },
   lname: { type: String },
+  gender: { type: String },
   address: { type: String },
   city: { type: String },
   state: { type: String },
@@ -15,7 +16,7 @@ const registeredSchema = mongoose.Schema({
   appointmentDateandTime: { type: String },
   appointmentDate: { type: String },
   age: { type: Number },
-  date:{type: String}
+  date: { type: String },
 });
 
 const Registered = mongoose.model("Registered", registeredSchema);

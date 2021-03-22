@@ -12,6 +12,7 @@ function AdminDetail({
   dob,
   age,
   hospital,
+  gender
 }) {
   if (age > 59) {
     return (
@@ -23,6 +24,10 @@ function AdminDetail({
         <p className="adminrow">
           <b className="adminheading">Name: </b>
           {name}
+        </p>
+        <p className="adminrow">
+          <b className="adminheading">Gender: </b>
+          {gender}
         </p>
         <p className="adminrow">
           <b className="adminheading">DOB: </b>
@@ -60,6 +65,10 @@ function AdminDetail({
         <p className="adminrow">
           <b className="adminheading">Name: </b>
           {name}
+        </p>
+        <p className="adminrow">
+          <b className="adminheading">Gender: </b>
+          {gender}
         </p>
         <p className="adminrow">
           <b className="adminheading">DOB: </b>

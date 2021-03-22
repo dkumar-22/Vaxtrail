@@ -1,4 +1,3 @@
-require("dotenv").config();
 const router = require("express").Router();
 let Registered = require("../models/registered.model");
 const nodemailer = require("nodemailer");
@@ -42,6 +41,7 @@ router.route("/add").post((req, res) => {
   const registered = new Registered({
     fname: req.body.fname,
     lname: req.body.lname,
+    gender:req.body.gender,
     address: req.body.address,
     city: req.body.city,
     state: req.body.state,

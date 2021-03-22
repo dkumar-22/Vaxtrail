@@ -8,7 +8,7 @@ function OdometerStats({ stat, heading }) {
   }, [stat]);
   return (
     <div className="odometerstats">
-      <h4>{heading}</h4>
+      <h4 className="odometer-heading">{heading}</h4>
       <Odometer format="d" duration={1000} value={val} />
     </div>
   );

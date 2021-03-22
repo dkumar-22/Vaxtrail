@@ -52,6 +52,15 @@ function App() {
         });
       })
       .catch((err) => console.log(err));
+    axios
+      .get("http://localhost:5000/vaccines")
+      .then((res) => {
+        dispatch({
+          type: "SET_VACCINES",
+          vaccines: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
   }, [dispatch, latitude, longitude]);
   return (
     <div className="App">

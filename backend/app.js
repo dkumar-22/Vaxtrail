@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const hospitalsRouter = require("./routes/hospitals");
 const registeredRouter = require("./routes/registered");
+const vaccineRouter = require("./routes/vaccines");
 require("dotenv").config();
 
 const app = express();
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 
 app.use("/hospitals", hospitalsRouter);
 app.use("/registered", registeredRouter);
+app.use("/vaccines", vaccineRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

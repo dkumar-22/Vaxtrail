@@ -75,6 +75,23 @@ export default function AddressForm({ details, handleDetails }) {
             onChange={handleDetails}
           />
         </Grid>
+        <Grid xs={12}>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={details.gender}
+              name="gender"
+              autoComplete="Gender"
+              onChange={handleDetails}
+            >
+              <MenuItem value={"Male"}>Male</MenuItem>
+              <MenuItem value={"Female"}>Female</MenuItem>
+              <MenuItem value={"Other"}>Other</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
         <Grid item xs={12}>
           <TextField
             required

@@ -130,19 +130,26 @@
 .odometerstats {
   font-family: "nevis";
   text-align: center;
-  color: black;
-  background-color: #eefdfe;
+  /* color: black;
+  background-color: #FFFAFB; */
   margin: 10px;
   padding: 30px 20px 0px;
   height: 100px;
   width: 180px;
-  border-radius: 15px;
-  box-shadow: -1px 5px 6px rgba(0, 0, 0, 0.13);
+  /* border-radius: 13px;
+  box-shadow: -1px 2px 6px rgba(0, 0, 0, 0.13); */
 }
 
-.odometerstats:hover {
+/* .odometerstats:hover {
   transform: scale(1.03);
   transition: 0.3s;
+} */
+
+.odometer-heading {
+  font-family: "nevis";
+  color: #ff0068;
+  font-size: 1.2rem;
+  padding-bottom: 12px;
 }
 
 .news {
@@ -173,7 +180,7 @@ a {
 
 .news-articles:hover {
   transform: scale(1.02);
-  transition: 0.3s;
+  transition: 0.1s;
   display: block;
 }
 
@@ -186,14 +193,14 @@ a {
 }
 
 .hide {
-  color: indigo;
+  color: #b80049;
   font-weight: 700;
   font-size: 0rem;
 }
 
 .news-articles:hover .hide {
   font-size: 0.8rem;
-  transition: ease-out 0.3s;
+  transition: ease-out 0.1s;
 }
 
 .footer {
@@ -369,7 +376,11 @@ a {
 
 .searchBox:hover > .searchInput {
   width: 650px;
-} */
+}  */
+
+.dh {
+  margin: 20px 50px;
+}
 
 .labelbox {
   text-align: center;
@@ -452,6 +463,10 @@ a {
   top: 15%;
 }
 
+.vaccine-name {
+  text-align: center;
+}
+
 .banner {
   position: absolute;
   background-color: #e84545;
@@ -497,11 +512,60 @@ a {
   box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.144);
 }
 
-.adminheading{
+.adminheading {
   margin-right: 5px;
   font-size: 1.05rem;
 }
 
 .adminrow {
   margin: 1% 0;
+}
+
+.vaccine-info {
+  display: flex;
+  margin: 40px 35px 80px;
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.247);
+}
+
+.info-left {
+  flex: 0.8;
+  background-color: #03506f;
+  padding-right: 20px;
+  padding: 50px;
+  color: whitesmoke;
+}
+
+.info-right {
+  background-color: #f6f5f5;
+  flex: 0.2;
+  padding: 10px;
+}
+
+.pb {
+  position: relative;
+  left: 20%;
+  top: 15%;
+}
+
+.vname {
+  margin-bottom: 20px;
+}
+
+.info-img {
+  object-fit: contain;
+  width: 250px;
+}
+
+.vstatus {
+  margin-top: 30px;
+}
+
+.vaccine-btn {
+  text-align:right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.admin-btns-v {
+  float: right;
 }

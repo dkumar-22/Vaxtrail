@@ -46,7 +46,10 @@ function Topbar() {
         <Link to="/hospitals" style={linkstyle}>
           <p className="tab-options">HOSPITALS</p>
         </Link>
-        <p className="tab-options">VACCINES</p>
+        <Link to="/vaccines" style={linkstyle}>
+          <p className="tab-options">VACCINES</p>
+        </Link>
+
         {logged ? (
           <Link to="/" style={linkstyle} onClick={handleLogout}>
             <p className="tab-options">LOGOUT</p>

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OdometerStats from "./OdometerStats";
 import Vaccines from "./Vaccines";
+import { useDataLayerValue } from "./DataLayer";
 function Stats() {
+  const [{ vaccines }] = useDataLayerValue();
   const [stats, setStats] = useState({
     active: 0,
     recovered: 0,
@@ -43,18 +45,17 @@ function Stats() {
         <div className="stats-2">
           <OdometerStats stat={stats.total} heading="TOTAL" />
           <OdometerStats stat={stats.new} heading="TODAY" />
-          <OdometerStats stat={20922344} heading="TREATED" />
+          <OdometerStats stat={20922344} heading="VACCINATED" />
         </div>
       </div>
       <div className="stats-right">
         <h2 className="stats-heading">SOME TOP VACCINES</h2>
         <div className="vacbars">
-          <Vaccines value={81} name="Covaxin" />
-          <Vaccines value={62} name="Covishield"/>
-          <Vaccines value={95} name="Pfizer"/>
-          <Vaccines value={90} name="Astrazeneca"/>
+          {vaccines.map(function (x) {
+            return <Vaccines value={x.efficacy} name={x.name} />;
+          })}
         </div>
-        <p style={{marginTop:"53px"}}>*As per the reports of WHO</p>
+        <p style={{ marginTop: "53px" }}>*As per the reports of WHO</p>
       </div>
     </div>
   );
