@@ -21,4 +21,5 @@ const registeredSchema = mongoose.Schema({
 
 const Registered = mongoose.model("Registered", registeredSchema);
 
-module.exports = Registered;
+module.exports.Registered = Registered;
+module.exports.registeredSchema = registeredSchema;

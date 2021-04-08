@@ -10,4 +10,5 @@ const vaccineSchema = mongoose.Schema({
 
 const Vaccine = mongoose.model("Vaccine", vaccineSchema);
 
-module.exports = Vaccine;
+module.exports.Vaccine = Vaccine;
+module.exports.vaccineSchema = vaccineSchema;

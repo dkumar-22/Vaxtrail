@@ -11,6 +11,9 @@ function AdminHospitals() {
   const [{ allHospitals }] = useDataLayerValue();
   return (
     <div className="hospitals-list">
+        <Link to="/feedbacks" style={linkstyle}>
+          <button className="feedbackbtn">View Feedbacks</button>
+        </Link>
       <div className="forbtn">
         <Link to="/add" style={linkstyle}>
           <button className="addbtn">+</button>

@@ -28,8 +28,19 @@ function AdminHospital({ id, type, name, contact, website, directions }) {
 
   return (
     <div className="hospital-card">
-      <div className="admin-hospi">
-        <h1 style={{ paddingBottom: "20px" }}>{name}</h1>
+      <div className="hcleft">
+        <div className="hch1">
+          <h1 style={{ paddingBottom: "20px" }}>{name}</h1>
+        </div>
+        <p className="detailsp hcd">
+          <b>Type: </b>
+          {type === "pvt" ? "Private" : "Government"}
+        </p>
+        <p className="detailsp hcd">
+          {" "}
+          <b>Contact: </b>
+          {contact}
+        </p>
         <div className="admin-btns">
           <Link to={"/edit/" + id} style={linkstyle}>
             <button className="edit-btn">Edit</button>
@@ -44,16 +55,27 @@ function AdminHospital({ id, type, name, contact, website, directions }) {
           </button>
         </div>
       </div>
-      <h4>Type: </h4>
-      <p>{type === "pvt" ? "Private" : "Government"}</p>
-      <h4>Contact: </h4>
-      <p style={{ paddingBottom: "10px" }}>{contact}</p>
-      <a className="card-links" href={website} target="_blank_">
-        Go To The Website
-      </a>
-      <a className="card-links" href={directions} target="_blank_">
-        Get Directions
-      </a>
+      <div className="hcright">
+      <a
+          className="cancel"
+          style={{
+            backgroundColor: "#91091e",
+            marginTop: "20px",
+            color: "white",
+          }}
+          href={website}
+          target="_blank_"
+        >
+          Go to Website
+        </a>
+        <a
+          className="cancel gd"
+          href={directions}
+          target="_blank_"
+        >
+          Get Directions
+        </a>
+      </div>
     </div>
   );
 }

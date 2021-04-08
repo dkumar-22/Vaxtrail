@@ -98,10 +98,14 @@ export default function Review({ details, type }) {
           <Typography gutterBottom>{details.shospital.name}</Typography>
           <Typography gutterBottom>
             {details.age > 59 ? (
-              <Typography gutterBottom>
-                {"Date and Time: " +
-                  details.appointmentDateandTime.replace("T", " ")}
-              </Typography>
+              <>
+                <Typography gutterBottom>
+                  {"Date: " + details.appointmentDateandTime.substring(0, 10)}
+                </Typography>
+                <Typography gutterBottom>
+                  {"Time: " + details.appointmentDateandTime.substring(11)+"  (24H format)"}
+                </Typography>
+              </>
             ) : (
               <Typography gutterBottom>
                 {"Date: " + details.appointmentDate}
@@ -111,10 +115,23 @@ export default function Review({ details, type }) {
             )}
           </Typography>
           <Typography gutterBottom>
-            <a className="card-links" target="_blank_" href={details.shospital.website}>Go to the Website</a>
+            <a
+              className="card-links"
+              target="_blank_"
+              href={details.shospital.website}
+            >
+              Go to the Website
+            </a>
           </Typography>
           <Typography gutterBottom>
-          <a className="card-links" target="_blank_" href={details.shospital.directions}>View Directions</a></Typography>
+            <a
+              className="card-links"
+              target="_blank_"
+              href={details.shospital.directions}
+            >
+              View Directions
+            </a>
+          </Typography>
         </Grid>
       </Grid>
     </React.Fragment>

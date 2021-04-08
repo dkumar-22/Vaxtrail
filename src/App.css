@@ -241,16 +241,6 @@ a {
   margin: 20px;
 }
 
-.hospital-card {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  background-color: #e8e8e8;
-  margin: 40px 0 30px;
-  width: 96.5vw;
-  height: 280px;
-  padding: 50px 25px;
-  border-radius: 20px;
-}
-
 .card-links {
   padding-right: 20px;
   color: rgb(119, 49, 184);
@@ -258,6 +248,37 @@ a {
 
 .card-links:hover {
   color: rgb(85, 12, 85);
+}
+
+.desc {
+  margin-top: 5%;
+}
+
+.hospital-card {
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.247);
+  margin: 60px 25px 50px;
+  height: 320px;
+  /* padding: 50px 45px; */
+  border-radius: 20px;
+  color: white;
+  display: flex;
+}
+
+.gd {
+  margin-top: 30px;
+  background-color: #1f441e;
+}
+
+.hcleft{
+  flex: 0.9;
+  background-color: #2b2e4a;
+  padding: 50px 45px;
+}
+
+.hcright{
+  flex: 0.1;
+  background-color: #e8e8e8;
+  padding: 50px 45px;
 }
 
 .forbtn {
@@ -505,10 +526,8 @@ a {
 }
 
 .user-details {
-  background-color: #e8e8e8;
   margin: 3.3%;
-  padding: 3% 4%;
-  border-radius: 25px;
+  border: 12px;
   box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.144);
 }
 
@@ -533,6 +552,10 @@ a {
   padding-right: 20px;
   padding: 50px;
   color: whitesmoke;
+}
+
+.admin-btns {
+  padding-top: 2%;
 }
 
 .info-right {
@@ -561,11 +584,100 @@ a {
 }
 
 .vaccine-btn {
-  text-align:right;
+  text-align: right;
   margin-top: 20px;
   margin-right: 20px;
 }
 
 .admin-btns-v {
   float: right;
+  display: none;
+}
+
+.info-left:hover > .admin-btns-v {
+  display: block;
+}
+
+.user-details {
+  display: flex;
+}
+
+.dleft {
+  flex: 0.5;
+  background-color: #03506F;
+  padding-right: 20px;
+  padding: 45px;
+  color: whitesmoke;
+}
+
+.dright {
+  flex: 0.5;
+  padding: 45px;
+  background-color: #F6F5F5;
+}
+
+.d {
+  margin-bottom: 5%;
+}
+
+.hch1 {
+  display: flex;
+}
+
+.hcd {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 1.1rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 20px;
+}
+
+.afh {
+  font-size: 1.11rem;
+}
+
+.frow {
+  margin: 5% 0;
+}
+
+.feedbackbtn {
+  outline: none;
+  border: none;
+  background-color: #393e46;
+  color: white;
+  position: absolute;
+  top: 94px;
+  left: 50px;
+  padding: 18px;
+  font-size: 0.9rem;
+  border-radius: 25px;
+  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.247);
+  cursor: pointer;
+}
+
+.feedbackbtn:hover {
+  transform: scale(1.02);
+  transition: 0.3s;
+}
+
+.feedbacks {
+  text-align: center;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.grid-item {
+  background-color: #14274e;
+  padding: 3% 1% 3% 5%;
+  border: 10px solid #9ba4b4;
+  font-size: 1.1rem;
+  margin: 20px;
+  color: white;
+  border-radius: 8px;
+  overflow: scroll;
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.247);
 }

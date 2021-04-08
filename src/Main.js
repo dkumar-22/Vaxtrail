@@ -19,6 +19,9 @@ import AdminDetails from "./AdminDetails";
 import VaccinePage from "./VaccinePage";
 import AddVaccine from "./AddVaccine";
 import EditVaccine from "./EditVaccine"
+import Register from "./Register"
+import Feedback from "./Feedback";
+import AdminFeedbacks from "./AdminFeedbacks";
 function Main() {
   const [{ logged }] = useDataLayerValue();
   return (
@@ -27,11 +30,14 @@ function Main() {
         <Topbar />
         <Switch>
           <Route path="/" exact component={App} />
+          <Route path="/admin/register" exact component={() => <Register />} />
           <Route path="/login" exact component={SignIn} />
           <Route path="/add" exact component={AddHospital} />
+          <Route path="/feedbacks" exact component={AdminFeedbacks} />
           <Route path="/hospitals" exact component={Hospitals} />
           <Route path="/register" exact component={Checkout} />
           <Route path="/success" exact component={Success} />
+          <Route path="/feedback/:id" exact component={Feedback} />
           <Route path="/status" exact component={Status} />
           <Route path="/status/:id" exact component={Details} />
           <Route path="/vaccines" exact component={VaccinePage} />
@@ -42,7 +48,7 @@ function Main() {
             path="/admin"
             exact
             component={() =>
-              logged ? <AdminHospitals /> : <Redirect to="/" />
+              logged ? <AdminHospitals /> : <Redirect to="/login" />
             }
           />
           <Route

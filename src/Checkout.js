@@ -141,6 +141,7 @@ export default function Checkout() {
         .catch((err) => console.log(err));
     }
   }, [activeStep, details, dispatch]);
+  
   return (
     <React.Fragment>
       <CssBaseline />

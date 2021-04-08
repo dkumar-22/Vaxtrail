@@ -4,6 +4,7 @@ export const initialState = {
   logged: false,
   admin: email,
   password: pass,
+  username: null,
   user: null,
   id: "",
   allHospitals: [],
@@ -23,6 +24,11 @@ export const initialState = {
 function reducer(state, action) {
   console.log("🕺", action);
   switch (action.type) {
+    case "SET_USER":
+      return {
+        ...state,
+        username: action.username,
+      };
     case "SET_LOGGED":
       return {
         ...state,

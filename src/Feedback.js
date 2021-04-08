@@ -16,7 +16,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="/">
-        VaxTrail
+        VaccTrack
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -45,33 +45,52 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
-  const [details, setDetails] = useState({
-    name: "",
-    about: "",
-    website: "",
-    status: "",
-    efficacy: "",
-  });
-  const [updated, setUpdated] = useState(false);
   let { id } = useParams();
-
+  console.log(id);
+  const [can, setcan] = useState(false);
+  const [data, setdata] = useState({});
+  const [details, setDetails] = useState({
+    bid: id,
+    name: "",
+    date: "",
+    health: "",
+    sideEffects: "",
+  });
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/vaccines/" + id)
-      .then((res) => {
-        setDetails({
-          name: res.data.name,
-          about: res.data.about,
-          website: res.data.website,
-          status: res.data.status,
-          efficacy: res.data.efficacy,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    async function getDetails() {
+      await axios
+        .post("http://localhost:5000/registered/status/" + id)
+        .then((res) => {
+          setdata(res.data)
+          if (res.data === "Not Found" || res.data === "") {
+            window.alert("Record Not Found!");
+            setcan(true);
+          } else {
+            if (res.data.age > 59) {
+              setDetails((prev) => {
+                return {
+                  ...prev,
+                  name: res.data.fname + " " + res.data.lname,
+                  date: res.data.appointmentDateandTime.substring(0, 10),
+                };
+              });
+            } else {
+              setDetails((prev) => {
+                return {
+                  ...prev,
+                  name: res.data.fname + " " + res.data.lname,
+                  date: res.data.appointmentDate,
+                };
+              });
+            }
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+    getDetails();
   }, [id]);
-
+  console.log(data);
+  const [updated, setUpdated] = useState(false);
   function handleChange(e) {
     const { name, value } = e.target;
     setDetails((prev) => {
@@ -81,16 +100,16 @@ export default function SignIn() {
   function handleSubmit(e) {
     e.preventDefault();
     const obj = {
-      name: details.name,
-      about: details.about,
-      website: details.website,
-      status: details.status,
-      efficacy: Number(details.efficacy),
+        userDetails: data,
+        health: details.health,
+        sideEffects: details.sideEffects,
+        bid:details.bid,
+        name:details.name,
+        date:details.date
     };
     console.log(obj);
-    console.log(typeof obj.longitude);
     axios
-      .post("http://localhost:5000/vaccines/update/" + id, obj)
+      .post("http://localhost:5000/feedback/add", obj)
       .then((res) => {
         console.log(res.data);
         setUpdated(true);
@@ -98,6 +117,9 @@ export default function SignIn() {
       .catch((err) => console.log(err));
   }
   const classes = useStyles();
+  if (can) {
+    return <Redirect to="/" />;
+  }
   if (updated) {
     return <Redirect to="/success" />;
   }
@@ -106,7 +128,7 @@ export default function SignIn() {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Edit Details
+          Add Your Feedback
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
@@ -114,27 +136,60 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            id="name"
-            label="Name of Vaccine"
-            name="name"
+            id="bid"
+            label="Booking ID"
+            name="bid"
             autoComplete="none"
             autoFocus
-            value={details.name}
+            value={details.bid}
             onChange={handleChange}
+            InputProps={{
+              readOnly: true,
+            }}
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="about"
-            label="About the Vaccine"
-            name="about"
+            id="name"
+            label="Name of Patient"
+            name="name"
             autoComplete="none"
-            value={details.about}
+            value={details.name}
+            onChange={handleChange}
+            InputProps={{
+              readOnly: true,
+            }}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="date"
+            label="Vaccination Date"
+            name="date"
+            autoComplete="none"
+            value={details.date}
+            onChange={handleChange}
+            InputProps={{
+              readOnly: true,
+            }}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="health"
+            label="Health During the 5 Days"
+            name="health"
+            autoComplete="none"
+            value={details.health}
             onChange={handleChange}
             multiline
-            rows={2}
+            rows={4}
             rowsMax={10}
           />
           <TextField
@@ -142,36 +197,15 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            id="website"
-            label="Website"
-            name="website"
+            id="sideEffects"
+            label="Any Side Effects Observed"
+            name="sideEffects"
             autoComplete="none"
-            value={details.website}
+            value={details.sideEffects}
             onChange={handleChange}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="status"
-            label="Vaccine status"
-            name="status"
-            autoComplete="none"
-            value={details.status}
-            onChange={handleChange}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="efficacy"
-            label="Enter vaccine efficacy"
-            name="efficacy"
-            autoComplete="none"
-            value={details.efficacy}
-            onChange={handleChange}
+            multiline
+            rows={4}
+            rowsMax={10}
           />
           <Button
             type="submit"
@@ -180,7 +214,7 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
           >
-            Save Changes
+            Send Feedback
           </Button>
         </form>
       </div>

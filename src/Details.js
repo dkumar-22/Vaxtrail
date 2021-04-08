@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
+const linkstyle = {
+  textDecoration: "none",
+};
+
 function Details() {
   const [det, sedet] = useState({});
   const [hospi, sethospi] = useState("");
@@ -9,6 +14,8 @@ function Details() {
   const [end, setend] = useState("");
   const [website, setwebsite] = useState("");
   const [can, setcan] = useState(false);
+  const [feedback, setFeedback] = useState(false);
+  const [canbtn, setcanbtn] = useState(false);
   const [dir, setdir] = useState("");
   let { id } = useParams();
 
@@ -19,6 +26,7 @@ function Details() {
       axios
         .post("http://localhost:5000/registered/delete/" + id, {
           email: det.email,
+          phone: det.phone,
         })
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
@@ -46,7 +54,20 @@ function Details() {
         .catch((err) => console.log(err));
     }
     getDetails();
-  }, [id]);
+    let x;
+    if (det.age > 59) {
+      x = new Date(det.appointmentDateandTime);
+    } else {
+      x = new Date(det.appointmentDate);
+    }
+
+    const date = new Date();
+    const diffTime = date - x;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    if (diffDays > 5) setFeedback(true);
+    if (diffDays >= 0) setcanbtn(true);
+    console.log(feedback);
+  }, [id, det.appointmentDateandTime, det.appointmentDate, det.age, feedback]);
 
   if (can) {
     return <Redirect to="/" />;
@@ -67,6 +88,18 @@ function Details() {
           <b>Gender: </b>
           {det.gender}
         </p>
+        {feedback && (
+          <Link to={"/feedback/" + id} style={linkstyle}>
+            <button
+              className="cancel"
+              style={{ backgroundColor: " #822659" }}
+              href={dir}
+              target="_blank_"
+            >
+              Feedback
+            </button>
+          </Link>
+        )}
         <p className="detailsp">
           <b>Registered on: </b>
           {det.date}
@@ -77,14 +110,14 @@ function Details() {
         </p>
         <p className="detailsp">
           <b>Address: </b>
-          <a
+          {<a
             className="cancel"
             style={{ backgroundColor: " #301b3f" }}
             href={website}
             target="_blank_"
           >
             View Website
-          </a>
+          </a>}
           {det.address + ", " + det.city + ", " + det.state + ", " + det.zip}
         </p>
         <p className="detailsp">
@@ -93,31 +126,33 @@ function Details() {
         </p>
         <p className="detailsp">
           <b>Email: </b>
-          <a
+          {<a
             className="cancel"
             style={{ backgroundColor: " #151515" }}
             href={dir}
             target="_blank_"
           >
             Get Directions
-          </a>
+          </a>}
           {det.email}
         </p>
         <p className="detailsp">
           <b>Name of the hospital: </b>
           {hospi}
         </p>
-        <button
-          onClick={handleClick}
-          className="cancel"
-          style={{ backgroundColor: " #387c6d" }}
-        >
-          Cancel Appointment
-        </button>
+        {!canbtn && (
+          <button
+            onClick={handleClick}
+            className="cancel"
+            style={{ backgroundColor: " #387c6d" }}
+          >
+            Cancel Appointment
+          </button>
+        )}
         {det.age > 59 ? (
           <p className="detailsp">
             <b>Appointment Date and Time: </b>
-            {det.appointmentDateandTime}
+            {det.appointmentDateandTime.replace("T", " ")}
           </p>
         ) : (
           <p className="detailsp">

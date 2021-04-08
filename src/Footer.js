@@ -5,7 +5,7 @@ function Footer() {
     <div className="footer">
       <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">
         <p className="footer-txt">
-          &#169; VaccTrack, Stay Safe, Stay Healthy 😷
+          &#169; VaxTrail, Stay Safe, Stay Healthy 😷
         </p>
       </a>
     </div>

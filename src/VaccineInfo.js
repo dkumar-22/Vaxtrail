@@ -45,7 +45,7 @@ function VaccineInfo({ name, id, about, website, status, efficacy }) {
         <h1 className="vname">{name}</h1>
         <p className="vabout">{about}</p>
         <p className="vstatus">
-          {"*" + status}{" "}
+          <b>{"*" + status}</b>{" "}
           <a
             className="cancel"
             style={{ backgroundColor: " #00917c" }}

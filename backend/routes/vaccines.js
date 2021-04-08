@@ -1,6 +1,6 @@
 const router = require("express").Router();
 let Vaccine = require("../models/vaccine.model");
-
+Vaccine = Vaccine.Vaccine
 router.route("/").get((req, res) => {
   Vaccine.find({}).then((data) => {
     res.send(data);

@@ -2,8 +2,12 @@ const router = require("express").Router();
 let Registered = require("../models/registered.model");
 const nodemailer = require("nodemailer");
 var credentials = require("./credentials.js");
-
+Registered = Registered.Registered
+const accountSid = credentials.sid;
+const authToken = credentials.token;
+const client = require("twilio")(accountSid, authToken);
 let appointmentDetails;
+let appointmentDetails2;
 
 const transporter = nodemailer.createTransport({
   port: 465,
@@ -28,6 +32,10 @@ router.route("/add").post((req, res) => {
       "Date and Time: " +
       req.body.appointmentDateandTime.replace("T", " ") +
       "<br/><p>*Timings in 24H format</p>";
+    appointmentDetails2 =
+      "Date and Time: " +
+      req.body.appointmentDateandTime.replace("T", " ") +
+      "(*Timings in 24H format)";
   } else {
     appointmentDetails =
       "<b>Date: </b>" +
@@ -37,11 +45,19 @@ router.route("/add").post((req, res) => {
       "-" +
       req.body.slot.end +
       "<br/><p>*Timings in 24H format</p>";
+    appointmentDetails2 =
+      " Date: " +
+      req.body.appointmentDate +
+      " Slot: " +
+      req.body.slot.start +
+      "-" +
+      req.body.slot.end +
+      "(*Timings in 24H format)";
   }
   const registered = new Registered({
     fname: req.body.fname,
     lname: req.body.lname,
-    gender:req.body.gender,
+    gender: req.body.gender,
     address: req.body.address,
     city: req.body.city,
     state: req.body.state,
@@ -59,8 +75,19 @@ router.route("/add").post((req, res) => {
   registered
     .save()
     .then((rec) => {
+      // client.messages
+      //   .create({
+      //     messagingServiceSid: "MGec90c5fc8d8f719bf6e70c03d8458a2a",
+      //     body:
+      //       "Vaccine booked. Your Reference ID: " +
+      //       rec._id +
+      //       appointmentDetails2,
+      //     to: "+91"+req.body.phone,
+      //   })
+      //   .then((message) => console.log(message.sid))
+      //   .done();
       const mailData = {
-        from: credentials.email,
+        from: "VaxTrail" + credentials.email,
         to: req.body.email,
         subject: "Vaccine Confimation",
         text: "text",
@@ -102,7 +129,7 @@ router.route("/delete/:id").all((req, res) => {
     .then(() => {
       res.json("Appointment Cancelled.");
       const mailData = {
-        from: credentials.email,
+        from: "VaxTrail" + credentials.email,
         to: req.body.email,
         subject: "Appointment Cancellation",
         text: "text",
@@ -113,7 +140,17 @@ router.route("/delete/:id").all((req, res) => {
           "</b>" +
           " has been cancelled. You can register your appointment again anytime.<br><br>Stay safe and healthy!<br/><br/>Thank You!",
       };
-
+      // client.messages
+      //   .create({
+      //     messagingServiceSid: credentials.messagingServiceSid,
+      //     body:
+      //       "Vaccination Appointment Cancelled. Your appointment with Booking ID: " +
+      //       req.params.id +
+      //       " has been cancelled.",
+      //     to: "+91"+req.body.phone,
+      //   })
+      //   .then((message) => console.log(message.sid))
+      //   .done();
       transporter.sendMail(mailData, (error, info) => {
         if (error) {
           return console.log(error);
