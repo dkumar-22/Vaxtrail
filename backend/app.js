@@ -17,7 +17,7 @@ app.options("*", cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://localhost:27017/locationDB", {
+mongoose.connect("mongodb+srv://dkumar22:1234@cluster0.jilge.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

@@ -24,7 +24,7 @@ function Stats() {
         setStats({
           active: response.data.activeCases,
           recovered: response.data.recovered,
-          new: response.data.activeCasesNew + response.data.recoveredNew,
+          new: response.data.activeCasesNew,
           deaths: response.data.deaths,
           total: response.data.totalCases,
         });
@@ -45,7 +45,7 @@ function Stats() {
         <div className="stats-2">
           <OdometerStats stat={stats.total} heading="TOTAL" />
           <OdometerStats stat={stats.new} heading="TODAY" />
-          <OdometerStats stat={90198673} heading="VACCINATED" />
+          <OdometerStats stat={123852566} heading="VACCINATED" />
         </div>
       </div>
       <div className="stats-right">

@@ -5,6 +5,7 @@ var credentials = require("./credentials.js");
 Registered = Registered.Registered
 const accountSid = credentials.sid;
 const authToken = credentials.token;
+const mid = credentials.messagingServiceSid;
 const client = require("twilio")(accountSid, authToken);
 let appointmentDetails;
 let appointmentDetails2;
@@ -75,17 +76,17 @@ router.route("/add").post((req, res) => {
   registered
     .save()
     .then((rec) => {
-      // client.messages
-      //   .create({
-      //     messagingServiceSid: "MGec90c5fc8d8f719bf6e70c03d8458a2a",
-      //     body:
-      //       "Vaccine booked. Your Reference ID: " +
-      //       rec._id +
-      //       appointmentDetails2,
-      //     to: "+91"+req.body.phone,
-      //   })
-      //   .then((message) => console.log(message.sid))
-      //   .done();
+      client.messages
+        .create({
+          messagingServiceSid: mid,
+          body:
+            "Vaccine booked. Your Reference ID: " +
+            rec._id +
+            appointmentDetails2,
+          to: "+91"+req.body.phone,
+        })
+        .then((message) => console.log(message.sid))
+        .done();
       const mailData = {
         from: "VaxTrail" + credentials.email,
         to: req.body.email,
@@ -114,12 +115,12 @@ router.route("/add").post((req, res) => {
 router.route("/status/:id").all((req, res) => {
   Registered.findById(req.params.id)
     .then((rec) => {
-      // console.log(rec);
-      // console.log(typeof rec);
+      console.log(rec);
+      console.log(typeof rec);
       res.send(rec);
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
       res.send("Not Found");
     });
 });
@@ -140,17 +141,17 @@ router.route("/delete/:id").all((req, res) => {
           "</b>" +
           " has been cancelled. You can register your appointment again anytime.<br><br>Stay safe and healthy!<br/><br/>Thank You!",
       };
-      // client.messages
-      //   .create({
-      //     messagingServiceSid: credentials.messagingServiceSid,
-      //     body:
-      //       "Vaccination Appointment Cancelled. Your appointment with Booking ID: " +
-      //       req.params.id +
-      //       " has been cancelled.",
-      //     to: "+91"+req.body.phone,
-      //   })
-      //   .then((message) => console.log(message.sid))
-      //   .done();
+      client.messages
+        .create({
+          messagingServiceSid: credentials.messagingServiceSid,
+          body:
+            "Vaccination Appointment Cancelled. Your appointment with Booking ID: " +
+            req.params.id +
+            " has been cancelled.",
+          to: "+91"+req.body.phone,
+        })
+        .then((message) => console.log(message.sid))
+        .done();
       transporter.sendMail(mailData, (error, info) => {
         if (error) {
           return console.log(error);

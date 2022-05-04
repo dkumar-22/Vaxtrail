@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDataLayerValue } from "./DataLayer";
-
+import Cookies from 'js-cookie';
 const linkstyle = {
   textDecoration: "none",
 };
@@ -15,6 +15,8 @@ function Topbar() {
         type: "SET_LOGGED",
         logged: false,
       });
+      Cookies.remove('loggedcookie');
+      Cookies.remove('name');
     } else console.log("Can't Logout");
   }
   return (

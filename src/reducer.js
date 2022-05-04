@@ -4,7 +4,7 @@ export const initialState = {
   logged: false,
   admin: email,
   password: pass,
-  username: null,
+  username: "",
   user: null,
   id: "",
   allHospitals: [],

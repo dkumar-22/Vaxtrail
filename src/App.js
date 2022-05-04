@@ -6,6 +6,7 @@ import News from "./News";
 import Footer from "./Footer";
 import axios from "axios";
 import { useDataLayerValue } from "./DataLayer";
+import Cookies from 'js-cookie';
 
 function App() {
   const [{ latitude, longitude }, dispatch] = useDataLayerValue();
@@ -18,6 +19,14 @@ function App() {
       dispatch({
         type: "SET_LONGITUDE",
         longitude: position.coords.longitude,
+      });
+      dispatch({
+        type: "SET_LOGGED",
+        logged: Cookies.get('loggedcookie'),
+      });
+      dispatch({
+        type: "SET_USER",
+        username: Cookies.get('name'),
       });
     }
 
