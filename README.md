@@ -41,7 +41,7 @@ Utilised MongoDB for storing the data. Used 5 MongoDB collections to store and u
 
 <b>Nearby Hospitals</b>
 
-<img src="images/nearbyHopitals.png"/>
+<img src="images/nearbyHospitals.png"/>
 
 <b>Available Vaccines</b>
 
