@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Vaxtrail Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Vaxtrail is an online vaccine booking or distribution system, helping users to tackle the current pandemic. It’s a completely online system which would promote digitization and even promote social distancing as slots for vaccination would be available at the nearest hospital <b>(within 2 kilometres of radius)</b> everyday thus reducing/ minimizing the risk of overcrowding.  
 
-In the project directory, you can run:
+Our project will help to keep things in order, maintaining proper records. 
 
-### `npm start`
+Users will be notified about their appointment using mail and SMS.
+Also, developed a feature that gives priority to the senior citizens in the process, also they will be able to choose time slots as per their ease.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Users can (after 5 days of their vaccination give appropriate feedback) which can provide information about the effectiveness of vaccines.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Utilised
 
-### `npm test`
+It is MERN based project using MongoDB for database management, a popular NoSQL database management software, we will be using ReactJS for designing the front end and Express and Node JS for designing the backend, thus making it as a full stack project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Database Description
 
-### `npm run build`
+Utilised MongoDB for storing the data. Used 5 MongoDB collections to store and use the data accordingly.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<ul>
+<li>Feedbacks -Stores the feedbacks of users.</li>
+<li>Locations-Stores the details and coordinates of the hospitals.</li>
+<li>Registereds- Stores the details of the registered users.</li>
+<li>Users -Stores the details of admin login.</li>
+<li>Vaccines-Stores the different vaccine details available in the country.</li>
+</ul>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Functionalities and Sneak Peak of the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<b>Important Functionalities</b>
 
-### `npm run eject`
+<img src="images/SneakPeak.png"/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<b>Front Page</b>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="images/front1.png"/>
+<img src="images/front2.png"/>
+<img src="images/front3.png"/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<b>Nearby Hospitals</b>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="images/nearbyHopitals.png"/>
 
-## Learn More
+<b>Available Vaccines</b>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img src="images/vaccines.png"/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+(User can add, edit or delete vaccines through the admin menu)
 
-### Code Splitting
+<b>Vaccine Registration and Application Status</b>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<img src="images/vaccineRegistration.png"/>
+<img src="images/status.png"/>
 
-### Analyzing the Bundle Size
+<b>Admin Menu</b>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<p>Admin Sign in Page</p>
+<img src="images/signin.png"/>
 
-### Making a Progressive Web App
+<p>Admin can see all the registered users</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img src="images/adminregistrations.png"/>
 
-### Advanced Configuration
+<p>Admin can add, edit or delete the available hospitals/vaccines</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<img src="images/addhospitals.png"/>
+<img src="images/addhospitals1.png"/>
+<img src="images/addhospitals2.png"/>
+<img src="images/vaccineadmin.png"/>
 
-### Deployment
+<b>Notifications after registration/cancellation</b>
+<img src="images/email.png"/>
+<img src="images/emailcancel.png"/>
+<img src="images/msgbook.jpg"/>
+<img src="images/msgcancel.png"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<b>Feedbacks</b>
+<img src="images/feedbacks.png"/>

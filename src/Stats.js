@@ -24,7 +24,7 @@ function Stats() {
         setStats({
           active: response.data.activeCases,
           recovered: response.data.recovered,
-          new: response.data.activeCasesNew,
+          new: Math.abs(response.data.activeCasesNew),
           deaths: response.data.deaths,
           total: response.data.totalCases,
         });

@@ -50,7 +50,7 @@ function Status() {
           </form>
         </div>
         <div className="status-right">
-          <img className="status-img" src={imgarr[0]} alt="img" />
+          <img className="status-img" src={imgarr[2]} alt="img" />
         </div>
       </div>
       <div className="status-footer">

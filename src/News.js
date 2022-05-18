@@ -8,7 +8,7 @@ function News() {
     async function getNews() {
       await axios
         .get(
-          "https://newsapi.org/v2/everything?apiKey=f6f396807a8248ed98cec28d06fe6bd7&q=covid19 coronavirus india&language=en&pageSize=20"
+          "https://newsapi.org/v2/everything?apiKey=f6f396807a8248ed98cec28d06fe6bd7&q=coronavirus&language=en&pageSize=20"
         )
         .then(function (response) {
           // handle success

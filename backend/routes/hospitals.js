@@ -50,7 +50,7 @@ router.route("/nearby/govt").all((req, res) => {
     type: "govt",
     location: {
       $geoWithin: {
-        $centerSphere: [[long, lat], 1.5 / 6378.1],
+        $centerSphere: [[long, lat], 2.0 / 6378.1],
       },
     },
   };
