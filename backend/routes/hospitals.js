@@ -1,5 +1,6 @@
 const router = require("express").Router();
 let Location = require("../models/hospital.model");
+const axios = require("axios");
 
 Location = Location.Location;
 
@@ -63,6 +64,21 @@ router.route("/govt").get((req, res) => {
   Location.find({ type: "govt" }).then((data) => {
     res.send(data);
   });
+});
+
+router.route("/news").all((req, res) => {
+  axios
+    .get(
+      "https://newsapi.org/v2/everything?apiKey=f6f396807a8248ed98cec28d06fe6bd7&q=coronavirus&language=en&pageSize=20"
+    )
+    .then(function (response) {
+      // handle success
+      res.send(response.data);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
 });
 
 router.route("/pvt").get((req, res) => {

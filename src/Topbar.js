@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDataLayerValue } from "./DataLayer";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 const linkstyle = {
   textDecoration: "none",
 };
@@ -15,8 +15,8 @@ function Topbar() {
         type: "SET_LOGGED",
         logged: false,
       });
-      Cookies.remove('loggedcookie');
-      Cookies.remove('name');
+      Cookies.remove("loggedcookie");
+      Cookies.remove("name");
     } else console.log("Can't Logout");
   }
   return (
@@ -42,29 +42,41 @@ function Topbar() {
             <p className="tab-options">REGISTRATIONS</p>
           </Link>
         )}
-       {!logged && <Link to="/status" style={linkstyle}>
-          <p className="tab-options">STATUS</p>
-        </Link>}
+        {!logged && (
+          <Link to="/status" style={linkstyle}>
+            <p className="tab-options">STATUS</p>
+          </Link>
+        )}
 
-        {!logged && <Link to="/hospitals" style={linkstyle}>
-          <p className="tab-options">HOSPITALS</p>
-        </Link>}
+        {!logged && (
+          <Link to="/hospitals" style={linkstyle}>
+            <p className="tab-options">HOSPITALS</p>
+          </Link>
+        )}
         <Link to="/vaccines" style={linkstyle}>
           <p className="tab-options">VACCINES</p>
         </Link>
+        {!logged && (
+          <>
+            <Link to="/login" style={linkstyle}>
+              <p className="tab-options">LOGIN</p>
+            </Link>
+            <Link to="/admin/register" style={linkstyle}>
+              <p className="tab-options">REGISTER</p>
+            </Link>
+          </>
+        )}
         {logged && <p className="tab-options">||</p>}
         {/* {logged ? (
           <Link to="/" style={linkstyle} onClick={handleLogout}>
               <p className="tab-options">{username.toUpperCase()}</p>
           </Link>
         ) : (
-          <Link to="/login" style={linkstyle}>
-            <p className="tab-options">LOGIN</p>
-          </Link>
+          
         )} */}
         {logged && (
           <Link to="/" style={linkstyle} onClick={handleLogout}>
-              <p className="tab-options">{username.toUpperCase()}</p>
+            <p className="tab-options">{username.toUpperCase()}</p>
           </Link>
         )}
       </div>

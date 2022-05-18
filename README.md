@@ -1,5 +1,7 @@
 # Vaxtrail Web App
 
+### Deployed Link: https://superlative-marigold-19de0c.netlify.app/
+
 ## Introduction
 
 Vaxtrail is an online vaccine booking or distribution system, helping users to tackle the current pandemic. It’s a completely online system which would promote digitization and even promote social distancing as slots for vaccination would be available at the nearest hospital <b>(within 2 kilometres of radius)</b> everyday thus reducing/ minimizing the risk of overcrowding.  
