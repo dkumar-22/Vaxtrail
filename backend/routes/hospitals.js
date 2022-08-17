@@ -19,8 +19,10 @@ router.route("/nearby").all((req, res) => {
     console.log(long, lat);
     const options = {
       location: {
-        $geoWithin: {
-          $centerSphere: [[long, lat], 1.5 / 6378.1],
+        $near :
+        {
+          $geometry: { type: "Point",  coordinates: [ long, lat ] },
+          $maxDistance: 1500,
         },
       },
     };
@@ -35,8 +37,10 @@ router.route("/nearby/pvt").all((req, res) => {
   const options = {
     type: "pvt",
     location: {
-      $geoWithin: {
-        $centerSphere: [[long, lat], 1.5 / 6378.1],
+      $near :
+      {
+        $geometry: { type: "Point",  coordinates: [ long, lat ] },
+        $maxDistance: 1500,
       },
     },
   };
@@ -50,8 +54,10 @@ router.route("/nearby/govt").all((req, res) => {
   const options = {
     type: "govt",
     location: {
-      $geoWithin: {
-        $centerSphere: [[long, lat], 2.0 / 6378.1],
+      $near :
+      {
+        $geometry: { type: "Point",  coordinates: [ long, lat ] },
+        $maxDistance: 1500,
       },
     },
   };
